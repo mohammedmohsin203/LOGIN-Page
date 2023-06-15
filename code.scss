@@ -1,0 +1,205 @@
+﻿$color_1: #ffff;
+$color_2: #333;
+$color_3: black;
+$font-family_1: 'Montserrat',sans-serif;
+$background-color_1: aliceblue;
+$background-color_2: #ffff;
+$background-color_3: #ff4b2b;
+$background-color_4: #eee;
+$background-color_5: orange;
+$background-color_6: rgb(255, 255, 255);
+$background-color_7: transparent;
+$border-color_1: #ffff;
+
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,800";
+@keyframes slide {
+	0%,49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	50%,100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: $font-family_1;
+	height: 100vh;
+	margin: 0 auto;
+}
+.container {
+	background-color: $background-color_1;
+	border-radius: 20px;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0px 14px 28px rgba(0,0,0,.22),0px 14px 28px rgba(0,0,0,.22);
+}
+.form-container {
+	position: absolute;
+	top: 0%;
+	height: 100%;
+	transition: all 0.6 ease-in-out;
+}
+.sign-up-container {
+	left: 0%;
+	width: 50%;
+	z-index: 1;
+	opacity: 0;
+}
+form {
+	background-color: $background-color_2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 30px 0 30;
+	height: 100%;
+	text-align: center;
+}
+h1 {
+	font-weight: bold;
+	margin: 0;
+}
+.Social-container {
+	margin: 20px;
+	a {
+		border: 1px solid gray;
+		border-radius: 20%;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 5px;
+		height: 40px;
+		width: 40px;
+	}
+}
+button {
+	margin-top: 20px;
+	border-radius: 20px;
+	border: 1px solid #ff4b2b;
+	background-color: $background-color_3;
+	color: $color_1;
+	font-size: 15px;
+	font-weight: bolder;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: capitalize;
+	transition: 0.8s ease-in;
+	&:active {
+		transform: scale(0.96);
+		background-color: $background-color_6;
+		color: $color_3;
+		border: solid 3px;
+	}
+}
+a {
+	color: $color_2;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0px;
+}
+input {
+	background-color: $background-color_4;
+	border: none;
+	height: 7vh;
+	text-decoration: none;
+	border-radius: 10px;
+	width: 100%;
+	margin: 8px 0;
+	padding: 12px 15px;
+}
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 100;
+	transition: 0.6s ease-in-out;
+}
+.overlay {
+	background-color: $background-color_5;
+	background: linear-gradient(to right, #16d9e3,#30c7ec,#46aef7 );
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: $color_1;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+	transform: translateX(0);
+	transition: 0.4s ease-out;
+}
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: 0.4s ease-out;
+}
+.overlay-left {
+	transform: translateX(-20%);
+}
+.overlay-right {
+	transform: translateX(0);
+	right: 0;
+}
+button.press {
+	background-color: $background-color_7;
+	border-color: $border-color_1;
+}
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: .5px;
+	margin: 20px 0 30px;
+}
+.container.right-panel-active {
+	.sign-in-container {
+		transform: translateX(100%);
+	}
+	.sign-up-container {
+		transform: translateX(100%);
+		opacity: 1;
+		z-index: 5;
+		animation: slide 0.6s;
+	}
+	.overlay-container {
+		transform: translateX(-100%);
+	}
+	.overlay {
+		transform: translateX(50%);
+	}
+	.overlay-left {
+		transform: translateX(0);
+	}
+	.overlay-right {
+		transform: translateX(20%);
+	}
+}
